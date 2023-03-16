@@ -25,8 +25,8 @@ jobs:
 
     strategy:
       matrix:
-        dockerfile: [[Dockerfile, "focal", "--build-arg tag=focal"], 
-                     [Dockerfile, "bionic", "--build-arg tag=bionic"]]
+        dockerfile: [[Dockerfile, "focal", "--build-arg tag=focal"]]
+#                     [Dockerfile, "bionic", "--build-arg tag=bionic"]]
 
     runs-on: ubuntu-latest
     name: Build
