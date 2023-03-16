@@ -1,4 +1,4 @@
-FROM ubuntu:bionic
+FROM ubuntu:focal
 
 # docker build ghcr.io/rse-ops/flux-wave:latest .
 
@@ -6,7 +6,17 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 WORKDIR /opt/
 RUN apt-get update && \
-    apt-get install -y fftw3-dev fftw3 pdsh libfabric-dev libfabric-bin libfabric1
+    apt-get install -y fftw3-dev \
+    fftw3 \
+    pdsh \
+    libfabric-dev \
+    libfabric-bin \
+    libfabric1 \
+    git \
+    libmpich-dev \
+    mpich \
+    cmake \
+    g++
 
 # install laamps
 RUN git clone --depth 1 --branch stable_29Sep2021_update2 https://github.com/lammps/lammps.git /opt/lammps && \
