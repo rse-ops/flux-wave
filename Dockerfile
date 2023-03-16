@@ -1,4 +1,5 @@
-FROM ubuntu:focal
+ARG tag=focal
+FROM ubuntu:${tag}
 
 # docker build ghcr.io/rse-ops/flux-wave:latest .
 
@@ -10,7 +11,6 @@ RUN apt-get update && \
     fftw3 \
     pdsh \
     libfabric-dev \
-    libfabric-bin \
     libfabric1 \
     git \
     libmpich-dev \
