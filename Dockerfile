@@ -8,6 +8,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 WORKDIR /opt/
 RUN apt-get update && \
     apt-get install -y fftw3-dev \
+    libfftw3-dev libfftw3-doc \
     fftw3 \
     pdsh \
     libfabric-dev \
