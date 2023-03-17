@@ -17,6 +17,7 @@ RUN apt-get update && \
     libmpich-dev \
     mpich \
     cmake \
+    sudo \
     g++
 
 # install laamps
