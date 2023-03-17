@@ -26,7 +26,7 @@ RUN git clone --depth 1 --branch stable_29Sep2021_update2 https://github.com/lam
     cd build && \
     . /etc/profile && \ 
     cmake ../cmake -D PKG_REAXFF=yes -D BUILD_MPI=yes -D PKG_OPT=yes -D FFT=FFTW3 && \
-    make -j ${build_jobs} && \
+    make && \
     make install
 
 # Create a home to put the examples in, and
