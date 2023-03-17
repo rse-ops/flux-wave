@@ -1,4 +1,5 @@
-FROM ubuntu:focal
+ARG tag=focal
+FROM ubuntu:${tag}
 
 # docker build ghcr.io/rse-ops/flux-wave:latest .
 
@@ -7,10 +8,10 @@ ENV DEBIAN_FRONTEND=noninteractive
 WORKDIR /opt/
 RUN apt-get update && \
     apt-get install -y fftw3-dev \
+    libfftw3-dev libfftw3-doc \
     fftw3 \
     pdsh \
     libfabric-dev \
-    libfabric-bin \
     libfabric1 \
     git \
     libmpich-dev \
@@ -25,7 +26,7 @@ RUN git clone --depth 1 --branch stable_29Sep2021_update2 https://github.com/lam
     cd build && \
     . /etc/profile && \ 
     cmake ../cmake -D PKG_REAXFF=yes -D BUILD_MPI=yes -D PKG_OPT=yes -D FFT=FFTW3 && \
-    make -j ${build_jobs} && \
+    make && \
     make install
 
 # Create a home to put the examples in, and

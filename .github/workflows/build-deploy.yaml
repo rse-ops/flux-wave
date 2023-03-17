@@ -25,7 +25,8 @@ jobs:
 
     strategy:
       matrix:
-        dockerfile: [[Dockerfile, "latest"]]
+        dockerfile: [[Dockerfile, "focal", "--build-arg tag=focal"]]
+#                     [Dockerfile, "bionic", "--build-arg tag=bionic"]]
 
     runs-on: ubuntu-latest
     name: Build
@@ -37,7 +38,8 @@ jobs:
       env:
         dockerfile: ${{ matrix.dockerfile[0] }}
         tag: ${{ matrix.dockerfile[1] }}
-      run: docker build -f ${dockerfile} -t ${{ env.container }}:${tag} .
+        flags: ${{ matrix.dockerfile[2] }}
+      run: docker build ${flags} -f ${dockerfile} -t ${{ env.container }}:${tag} .
 
     - name: GHCR Login
       if: (github.event_name != 'pull_request')
